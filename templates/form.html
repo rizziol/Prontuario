@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Formulário</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <img id="imagem" src="{{ url_for('static', filename='R3.png') }}" alt="Riscienza">
+
+    <h1 id="titulo">Avaliação - Ortopedia</h1>
+
+    <div id="container">
+        
+            <div id="formulario1">
+                <h2>Informações pessoais</h2>
+                    <form action="/submit_form" method="post">
+                    
+                        <label for="data_avaliacao">Data da Avaliação:</label>
+                        <input class="entradas" type="date" id="data_avaliacao" name="data_avaliacao"><br>
+
+                        <label for="nome">Nome:</label>
+                        <input class="entradas, campo-grande" type="text" id="nome" name="nome">
+
+                        <label for="idade">Idade:</label>
+                        <input class="entradas, campo-pequeno" type="number" id="idade" name="idade"><br>
+
+                        <label for="cpf">CPF</label>
+                        <input class="entradas, medio" type="text" id="cpf", name="cpf"><br>
+            
+                        <label for="telefone">Telefone:</label>
+                        <input class="entradas, medio" type="text" id="telefone"name="telefone"><br>
+
+                        <label for="email">Email:</label>
+                        <input class="entradas" type="email" id="email" name="email"><br>
+
+                        <label for="endereco">Endereço:</label><br>
+                        <textarea class="entradas, longo" id="endereco" name="endereco"></textarea><br>
+
+                        <label for="cep">CEP:</label>
+                        <input class="entradas, medio" type="text" id="cep"name="cep"><br>
+
+            </div>
+
+            <div id="formulario2">
+                    <h2>Avaliação fisioterapêutica</h2>
+                        <label for="regiao">Região acometida:</label>
+                        <select class="entradas" name="regiao" id="regiao">
+                            <option value="" selected disabled hidden>Selecione uma opção</option>
+                            <option value="ombro">Ombro</option>
+                            <option value="cotovelo">Cotovelo</option>
+                            <option value="punho_mao">Punho/mão</option>
+                            <option value="quadril">Quadril</option>
+                            <option value="joelho">Joelho</option>
+                            <option value="tornozelo_pe">Tornozelo/pé</option>
+                            <option value="coluna">Coluna</option>
+                        </select><br>
+
+                        <label for="diagnostico_medico">Diagnóstico médico:</label>
+                        <input class="entradas" type="text" id="diagnostico_medico"name="diagnostico_medico"><br>
+
+                        <label for="queixa">Queixa principal:</label>
+                        <input class="entradas" type="text" id="queixa"name="queixa"><br>
+
+                        <label for="antecedentes">Antecedentes pessoais:</label><br>
+                        <input class="entradas" type="text" id="antecedentes"name="antecedentes"><br>
+
+                        <label for="hma">História da moléstia atual:</label><br>
+                        <textarea class="entradas, longo" id="hma" name="hma"></textarea><br>
+
+                        <label for="inspecao">Inspeção, palpação, força e ADM:</label><b>
+                        <textarea class="entradas, longo" type="text" id="inspecao"name="inspecao"></textarea><br>
+
+                        <label for="questionario">Questionário:</label>
+                        <select class="entradas" name="questionario" id="questionario">
+                            <option value=" ">Selecione uma opção</option>
+                            <option value="kujala">Kujala</option>
+                            <option value="lysholm">Lysholm</option>
+                            <option value="lefs">LEFS</option>
+                            <option value="visa_p">VISA-P</option>
+                            <option value="visa_a">VISA-A</option>
+                            <option value="aofas">AOFAS</option>
+                            <option value="faos">FAOS</option>
+                            <option value="atrs">ATRS</option>
+                            <option value="oswestry">OSWESTRY</option>
+                            <option value="roland_morris">Roland Morris</option>
+                            <option value="dash">DASH</option>
+                            <option value="spadi">SPADI</option>
+                            <option value="ases">ASES</option>
+                            <option value="ucla">UCLA</option>
+                            <option value="ndi">NDI</option>
+                        </select>
+                        
+                        <label for="questionario_score">Total:</label>
+                        <input class="entradas, campo-pequeno" type="number" id="questionario_score"name="questionario_score"><br>
+                    <br>
+                            <div id="botao">
+                                <button type="Submit" class="salvar" id="salvar">Salvar</button>
+                                <button type="reset" class="salvar" id="limpar">Limpar</button>
+                                <button type="submit" class="salvar" id="sair">Sair</button>
+                            </div>   
+            </div>
+                    </form>
+        
+
+        
+                
+    </div>
+    
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+
+    //script do cep
+
+    $(document).ready(function () { 
+        var $campo = $("#cep");
+        $campo.mask('00000-000', {reverse: true});
+    });
+
+    //script do telefone
+
+    $(document).ready(function () { 
+        $('#telefone').mask('(00) 00000-0000');
+    });
+
+    //script de fechar a aba
+
+    document.getElementById("sair").addEventListener("click", function() {
+        window.close(); // Fecha a aba do navegador
+    });
+
+
+    //script para CPF
+
+    $(document).ready(function () { 
+        $('#cpf').mask('000.000.000-00', {reverse: true});
+    });
+
+</script>  
+    
+</html>
